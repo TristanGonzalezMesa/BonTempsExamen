@@ -1,0 +1,43 @@
+﻿@model BonTemps.Models.Reservering
+
+@{
+
+}
+
+<form asp-action="menukeuze" class="ReserveringFormMenu">
+    <input type="hidden" id="Aantalpersonen" value="@Model.AantalPersonen" />
+    @for (int i = 0; i < Model.AantalPersonen; i++)
+    {
+
+        <p>Keuze @{ int q = i + 1; } @q :</p>
+        <div class="form-group">
+            <label asp-for="Id" class="control-label"></label>
+            <select asp-for="Id" asp-id="@i" class="form-control" asp-items="ViewBag.ReserveringMenu"></select>
+        </div>
+    }
+     <input type="submit" value="Create" class="btn btn-primary" />
+</form>
+
+@*<button OnClick="Submit()"></button>*@
+
+@*@section Scripts{
+        <script type="text/javascript">
+            Submit() {
+                var AantalPersonen = document.getElementById("Aantalpersonen").value;
+
+                var output = []
+                for (var i = 0; i < AantalPersonen; i++) {
+                    var t = {
+                        Id = i,
+                        Name = document.getElementById(i).value
+                    }
+                    output[i] = t
+                }
+
+                console.table(output)
+            }
+
+
+
+        </script>
+    }*@

@@ -1,0 +1,95 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>@ViewData["Title"] - BonTemps</title>
+    <link rel="stylesheet" href="~/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+</head>
+<body>
+    <div class="container">
+        <div id="site-header">
+            <header id="header" class="header-block-top">
+                <div class="container">
+                    <div class="row">
+                        <div class="main-menu">
+                            <!-- navbar -->
+                            <nav class="navbar navbar-default" id="mainNav">
+                                <div class="navbar-header">
+                                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                                        <span class="sr-only">Toggle navigation</span>
+                                        <span class="icon-bar"></span>
+                                        <span class="icon-bar"></span>
+                                        <span class="icon-bar"></span>
+                                    </button>
+                                    <div class="logo">
+                                        <a class="navbar-brand js-scroll-trigger logo-header" href="#">
+                                            <h2>Bon Temps</h2>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div id="navbar" class="navbar-collapse collapse">
+                                    <ul class="nav navbar-nav navbar-right">
+
+
+                                        @if (User.Identity.IsAuthenticated)
+                                        {
+                                            <li class="">
+                                                <a class="" asp-area="" asp-controller="Reserveringen" asp-action="Index">Reserveringen</a>
+                                            </li>
+                                            <li class="">
+                                                <a class="" asp-area="" asp-controller="Menus" asp-action="Index">Menus</a>
+                                            </li>
+                                            <li class="">
+                                                <a class="" asp-area="" asp-controller="Gerechten" asp-action="Index">Gerechten</a>
+                                            </li>
+
+                                            <li class="">
+                                                <a class="" asp-area="" asp-controller="Ingredienten" asp-action="Index">Ingredienten</a>
+                                            </li>
+                                            <li class="">
+                                                <a class="" asp-area="" asp-controller="Klanten" asp-action="Index">Klanten</a>
+                                            </li>
+                                        }
+                                        else {
+                                        <li class="active"><a href="#banner">Home</a></li>
+                                        <li><a href="~/#about">About us</a></li>
+                                        <li><a href="~/#menu">Menu</a></li>
+                                        <li><a href="~/#pricing">pricing</a></li>
+                                        <li><a href="~/#reservation">Reserveer</a></li>
+                                        <li><a href="~/#footer">Contact us</a></li>
+                                        
+                                        }
+                                        <partial name="_LoginPartial" />
+                                    </ul>
+                                </div>
+                                <!-- end nav-collapse -->
+                            </nav>
+                            <!-- end navbar -->
+                        </div>
+                    </div>
+                    <!-- end row -->
+                </div>
+                <!-- end container-fluid -->
+            </header>
+            <!-- end header -->
+        </div>
+    </div>
+    <!-- end site-header -->
+    <div class="container">
+        <main role="main" class="pb-3 admin">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            &copy; 2022 - BonTemps - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+        </div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

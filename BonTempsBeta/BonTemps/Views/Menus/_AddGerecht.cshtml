@@ -1,0 +1,32 @@
+﻿@model BonTemps.Models.MenuGerecht
+
+@{
+    ViewData["Title"] = "_AddGerecht";
+}
+
+<h4>Gerecht Toevoegen</h4>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="AddGerecht" asp-controller="Menus" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="MenuId" />
+            <div class="form-group">
+                <label asp-for="GerechtId" class="control-label"></label>
+                <select asp-for="GerechtId" class="form-control" asp-items="ViewBag.GerechtId"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="Gerecht" class="control-label"></label>
+                <span asp-validation-for="Gerecht" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Opslaan" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

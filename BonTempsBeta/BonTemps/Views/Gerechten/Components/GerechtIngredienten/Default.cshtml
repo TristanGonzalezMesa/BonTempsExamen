@@ -1,0 +1,29 @@
+﻿@model IEnumerable<BonTemps.Models.GerechtIngredient>
+
+<h4>Ingredienten</h4>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Ingredient.Naam)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Ingredient.Eenheid)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Ingredient.Naam)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Ingredient.Eenheid)
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

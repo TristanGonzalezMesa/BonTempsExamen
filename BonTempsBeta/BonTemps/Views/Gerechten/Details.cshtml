@@ -1,0 +1,37 @@
+﻿@model BonTemps.Models.Gerecht
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Gerechten</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.GerechtSoortId)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.GerechtSoortId)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Naam)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Naam)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>
+<!--De Viewcomponent aanroepen en toevoegen-->
+
+
+<div>
+    @await Component.InvokeAsync("GerechtIngredienten", new { id = Model.Id })
+    @await Html.PartialAsync("_AddIngredient", new BonTemps.Models.GerechtIngredient() { GerechtId = Model.Id })
+</div>

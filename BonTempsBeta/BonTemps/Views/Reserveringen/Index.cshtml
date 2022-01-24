@@ -1,0 +1,45 @@
+﻿@model IEnumerable<BonTemps.Models.Reservering>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Datum)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Tijd)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Klant.Naam)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Datum)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Tijd)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Klant.Voornaam)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                <a asp-action="Factuur" asp-route-id="@item.Id">Factuur</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

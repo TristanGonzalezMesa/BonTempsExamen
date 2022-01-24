@@ -1,0 +1,41 @@
+﻿@model BonTemps.Models.Reservering
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Reserveringen</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Datum)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Datum)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Tijd)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Tijd)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Klant.Naam)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Klant.Naam)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>
+@await Component.InvokeAsync("MenuReserveringen", new { id = Model.Id })
+
+<div>
+    @await Html.PartialAsync("_AddMenu", new BonTemps.Models.ReserveringMenu() { ReserveringId = Model.Id })
+</div>

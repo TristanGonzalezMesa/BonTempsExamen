@@ -1,0 +1,99 @@
+﻿@model BonTemps.Models.FactuurViewModel
+
+@{
+    ViewData["Title"] = "Factuur";
+}
+
+<h1>Factuur</h1>
+
+@foreach (var item in Model.Reserveringen)
+{
+    <p>
+        @Html.DisplayFor(modelItem => item.Reservering.Klant.Voornaam)
+        @Html.DisplayFor(modelItem => item.Reservering.Klant.Achternaam)
+    </p>
+    <p>
+        @Html.DisplayFor(modelItem => item.Reservering.Klant.Straat)
+        @Html.DisplayFor(modelItem => item.Reservering.Klant.Huisnummer)
+    </p>
+    <p>
+        @Html.DisplayFor(modelItem => item.Reservering.Klant.Residence)
+        ,
+        @Html.DisplayFor(modelItem => item.Reservering.Klant.Postcode)
+    </p>
+
+    <h1>Reservering</h1>
+    <p>
+        <b>
+            @Html.DisplayNameFor(model => model.Reserveringen[0].Reservering.Datum)
+        </b>
+    </p>
+    <p>
+        @Html.DisplayFor(modelItem => item.Reservering.Datum)
+    </p>
+    <p>
+        <b>
+            @Html.DisplayNameFor(model => model.Reserveringen[0].Reservering.Tijd)
+        </b>
+    </p>
+    <p>
+        @Html.DisplayFor(modelItem => item.Reservering.Tijd)
+    </p>
+    <p>
+        <b>
+            @Html.DisplayNameFor(model => model.Reserveringen[0].Reservering.AantalPersonen)
+        </b>
+    </p>
+    <p>
+        @Html.DisplayFor(modelItem => item.Reservering.AantalPersonen)
+    </p>
+}
+
+<h1>Couverts</h1>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Reserveringen[0].Menu)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TotaalPrijs)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Reserveringen)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Reservering.ReserveringMenu)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Menu.Prijs)
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<p>
+    <b>
+    Totaal
+        @Html.DisplayFor(model => model.TotaalPrijsExBTW)
+    </b>
+</p>
+
+<p>
+    <b>
+        BTW 
+            @Html.DisplayFor(model => model.BTW)
+    </b>
+</p>
+
+<p>
+    <b>
+        Te betalen
+            @Html.DisplayFor(model => model.TotaalPrijs)
+    </b>
+</p>
