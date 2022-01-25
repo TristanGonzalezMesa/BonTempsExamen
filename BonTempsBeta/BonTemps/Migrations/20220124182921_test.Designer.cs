@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BonTemps.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20220124140507_nieuwalles")]
-    partial class nieuwalles
+    [Migration("20220124182921_test")]
+    partial class test
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -38,14 +38,6 @@ namespace BonTemps.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Gerechten");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            GerechtSoortId = 1,
-                            Naam = "Vlees"
-                        });
                 });
 
             modelBuilder.Entity("BonTemps.Models.GerechtIngredient", b =>
@@ -80,13 +72,6 @@ namespace BonTemps.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("GerechtSoorten");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Soort = "Frisdrank"
-                        });
                 });
 
             modelBuilder.Entity("BonTemps.Models.Ingredient", b =>
@@ -107,14 +92,6 @@ namespace BonTemps.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Ingredienten");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Eenheid = "50ml",
-                            Naam = "Sinas"
-                        });
                 });
 
             modelBuilder.Entity("BonTemps.Models.Klant", b =>
@@ -194,14 +171,6 @@ namespace BonTemps.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Menus");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Naam = "Diner",
-                            Prijs = 20m
-                        });
                 });
 
             modelBuilder.Entity("BonTemps.Models.MenuGerecht", b =>
@@ -243,16 +212,6 @@ namespace BonTemps.Migrations
                     b.HasIndex("KlantId");
 
                     b.ToTable("Reserveringen");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            AantalPersonen = 0,
-                            Datum = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            KlantId = 1,
-                            Tijd = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
-                        });
                 });
 
             modelBuilder.Entity("BonTemps.Models.ReserveringMenu", b =>
@@ -271,14 +230,6 @@ namespace BonTemps.Migrations
                     b.HasIndex("MenuId");
 
                     b.ToTable("ReserveringMenus");
-
-                    b.HasData(
-                        new
-                        {
-                            ReserveringId = 1,
-                            MenuId = 1,
-                            Aantal = 2
-                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>

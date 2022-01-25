@@ -40,33 +40,45 @@ namespace BonTemps.Data
 
 
 
-         builder.Entity<Klant>()
-        .HasData(
-               new Klant
-               {
-                   Id = 1,
-                   Voornaam = "Test",
-                   Achternaam = "Achtermaam",
-                   Straat = "Straat",
-                   Huisnummer = 10,
-                   Postcode = "341232",
-                   Residence = "Niks",
-                   Email = "test@test.nl",
-                   Telefoonnummer = "74933493843"
+            builder.Entity<Klant>()
+           .HasData(
+                  new Klant
+                  {
+                      Id = 1,
+                      Voornaam = "Test",
+                      Achternaam = "Achtermaam",
+                      Straat = "Straat",
+                      Huisnummer = 10,
+                      Postcode = "341232",
+                      Residence = "Niks",
+                      Email = "test@test.nl",
+                      Telefoonnummer = "74933493843"
 
-               }
-               );
+                  }
+                  );
 
-         builder.Entity<Gerecht>()
-        .HasData(
-            new Gerecht
-            {
-                Id = 1,
-                GerechtSoortId = 1,
-                Naam = "Vlees"
-            }
-            );
-        builder.Entity<Reservering>()
+            builder.Entity<Gerecht>() // Seeding Database vullen
+       .HasData(
+           new Gerecht
+           {
+               Id = 1,
+               GerechtSoortId = 2,
+               Naam = "Biefstuk"
+           },
+           new Gerecht
+           {
+               Id = 2,
+               GerechtSoortId = 1,
+               Naam = "Carpaccio"
+           },
+           new Gerecht
+           {
+               Id = 3,
+               GerechtSoortId = 3,
+               Naam = "Vanilleijs"
+           }
+           );
+            builder.Entity<Reservering>()
        .HasData(
            new Reservering
            {
@@ -74,34 +86,79 @@ namespace BonTemps.Data
                KlantId = 1
            }
            );
-        builder.Entity<Menu>()
+            builder.Entity<Menu>()
       .HasData(
         new Menu
         {
             Id = 1,
-            Naam = "Diner",
+            Naam = "HerfstMenu",
+            Prijs = 24
+        },
+        new Menu
+        {
+            Id = 2,
+            Naam = "KerstMenu",
+            Prijs = 23
+        },
+        new Menu
+        {
+            Id = 3,
+            Naam = "FeestMenu",
             Prijs = 20
         }
         );
-        builder.Entity<Ingredient>()
+            builder.Entity<Ingredient>()
         .HasData(
         new Ingredient
         {
             Id = 1,
-            Naam = "Sinas",
-            Eenheid = "50ml"
+            Naam = "Vlees",
+            Eenheid = "500 gram"
+        },
+        new Ingredient
+        {
+            Id = 2,
+            Naam = "Rundercarpaccio",
+            Eenheid = "250 gram"
+        },
+        new Ingredient
+        {
+            Id = 3,
+            Naam = "Pijnboompit",
+            Eenheid = "10 gram"
+        },
+        new Ingredient
+        {
+            Id = 4,
+            Naam = "Ijs",
+            Eenheid = "100 gram"
         }
         );
-        builder.Entity<GerechtSoort>()
+            builder.Entity<GerechtSoort>()
         .HasData(
         new GerechtSoort
         {
             Id = 1,
-            Soort = "Frisdrank",
+            Soort = "VoorGerecht",
+        },
+        new GerechtSoort
+        {
+            Id = 2,
+            Soort = "HoofdGerecht",
+        },
+        new GerechtSoort
+        {
+            Id = 3,
+            Soort = "NaGerecht",
+        },
+        new GerechtSoort
+        {
+            Id = 4,
+            Soort = "Drank",
         }
         );
-        builder.Entity<ReserveringMenu>()
-        .HasData(
+            builder.Entity<ReserveringMenu>()
+   .HasData(
    new ReserveringMenu
    {
        ReserveringId = 1,
@@ -109,6 +166,9 @@ namespace BonTemps.Data
        Aantal = 2
    }
    );
+
+
         }
     }
 }
+

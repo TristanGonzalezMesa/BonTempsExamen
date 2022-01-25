@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace BonTemps.Migrations
 {
-    public partial class nieuwalles : Migration
+    public partial class test : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -324,39 +324,9 @@ namespace BonTemps.Migrations
                 });
 
             migrationBuilder.InsertData(
-                table: "GerechtSoorten",
-                columns: new[] { "Id", "Soort" },
-                values: new object[] { 1, "Frisdrank" });
-
-            migrationBuilder.InsertData(
-                table: "Gerechten",
-                columns: new[] { "Id", "GerechtSoortId", "Naam" },
-                values: new object[] { 1, 1, "Vlees" });
-
-            migrationBuilder.InsertData(
-                table: "Ingredienten",
-                columns: new[] { "Id", "Eenheid", "Naam" },
-                values: new object[] { 1, "50ml", "Sinas" });
-
-            migrationBuilder.InsertData(
                 table: "Klant",
                 columns: new[] { "Id", "Achternaam", "Email", "Huisnummer", "Postcode", "Residence", "Straat", "Telefoonnummer", "Voornaam" },
                 values: new object[] { 1, "Achtermaam", "test@test.nl", 10, "341232", "Niks", "Straat", "74933493843", "Test" });
-
-            migrationBuilder.InsertData(
-                table: "Menus",
-                columns: new[] { "Id", "Naam", "Prijs" },
-                values: new object[] { 1, "Diner", 20m });
-
-            migrationBuilder.InsertData(
-                table: "Reserveringen",
-                columns: new[] { "Id", "AantalPersonen", "Datum", "KlantId", "Tijd" },
-                values: new object[] { 1, 0, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 1, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified) });
-
-            migrationBuilder.InsertData(
-                table: "ReserveringMenus",
-                columns: new[] { "MenuId", "ReserveringId", "Aantal" },
-                values: new object[] { 1, 1, 2 });
 
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",
